@@ -1,4 +1,4 @@
-# agilehub
+# Vue-Express-Webpack Template
 
 ## Project setup
 ```
