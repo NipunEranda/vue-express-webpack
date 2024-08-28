@@ -1,13 +1,20 @@
 const express = require("express");
 const path = require("path");
-// const dotEnv = require("dotenv");
-// const cors = require("cors");
+const dotEnv = require("dotenv");
+const cors = require("cors");
 const app = express();
-// dotEnv.config();
+dotEnv.config();
+
+const { authInit } = require("./routes/auth");
+
+const prefix = '/api';
 
 // Serve static files from the dist directory
 app.use(express.static(path.join(__dirname)));
-// app.use(cors());
+app.use(cors());
+
+// Register routes
+authInit(prefix, app);
 
 app.get("/api/test", (req, res) => {
   res.status(200).json({ test: "test" });
